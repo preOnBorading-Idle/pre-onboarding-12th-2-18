@@ -72,3 +72,6 @@ const del = <T>(
 ): Promise<T> => request<T>({ endpoint, method: 'DELETE', params, requiresToken, data });
 
 export { get, post, put, del as delete };
+// const instance = axios.create({
+// 	baseURL: `https://api.github.com/repos/facebook/react`,
+// });
