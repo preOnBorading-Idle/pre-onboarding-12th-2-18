@@ -3,7 +3,6 @@ import { getIssueList } from '../../api/IssueApi';
 import { IssueListType } from '../../utils/types/issueList.interface';
 import LoadingSpinner from '../../components/loading/Loading';
 import IssueItem from '../../components/issueItem/IssueItem';
-import { useNavigate } from 'react-router-dom';
 import AdBanner from '../../components/AdBanner/AdBanner';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
@@ -11,7 +10,6 @@ function IssueList() {
 	const [issues, setIssues] = useState<IssueListType[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
-	const navigate = useNavigate();
 	const observerRef = useRef<any>(null);
 
 	useEffect(() => {
@@ -21,9 +19,9 @@ function IssueList() {
 				setIsLoading(false);
 			})
 			.catch(error => {
-				navigate('/error');
+				console.error(error);
 			});
-	}, [currentPage, navigate]);
+	}, [currentPage]);
 
 	useIntersectionObserver(observerRef, () => {
 		setCurrentPage(currentPage + 1);
