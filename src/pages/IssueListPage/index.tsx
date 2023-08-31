@@ -9,10 +9,11 @@ import useIntersectionObserver from '../../utils/useIntersectionObserver';
 function IssueList() {
 	const [issues, setIssues] = useState<IssueListType[]>([]);
 	const [currentPage, setCurrentPage] = useState<number>(1);
-	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const observerRef = useRef<any>(null);
 
 	useEffect(() => {
+		setIsLoading(true);
 		getIssueList(currentPage)
 			.then((issues: any) => {
 				setIssues(prevList => [...prevList, ...issues]);
