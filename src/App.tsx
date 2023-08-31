@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import LoadingSpinner from './components/loading/Loading';
+
+import ROUTES from './utils/constants/Routes';
+
+const MainPage = lazy(() => import('./pages/MainPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const IssueList = lazy(() => import('./pages/IssueListPage'));
+const IssueDetail = lazy(() => import('./pages/IssueDetailPage'));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Suspense fallback={<LoadingSpinner />}>
+				<Routes>
+					<Route path={ROUTES.MAIN} element={<MainPage />} />
+					<Route path={ROUTES.ISSUELIST} element={<IssueList />} />
+					<Route path={`${ROUTES.ISSUEDETAIL}:number`} element={<IssueDetail />} />
+					<Route path="*" element={<NotFoundPage />} />
+				</Routes>
+			</Suspense>
+		</>
+	);
 }
 
 export default App;
