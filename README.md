@@ -7,7 +7,7 @@
 
 ## 🚀실행 방법
 
-```jsx
+```.bash
 $ npm install
 $ npm start
 ```
