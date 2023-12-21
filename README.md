@@ -12,12 +12,6 @@ $ npm install
 $ npm start
 ```
 
-### 배포 링크
-
-✌️ 개인의 서버에 올린 작업물로 2023년 10월부터는 접속이 불가 할 수 있는 점 양해바랍니다.
-
-[배포 링크 - Issue-list](http://pre-onboarding-12th-2-18.s3-website.ap-northeast-2.amazonaws.com/)
-
 ### 동작 영상
 <img width='800px' src='https://github.com/richcollector/issues-list/assets/104312779/60e18cca-5a97-45a0-9659-ce1e822d47b2' alt='원티드-18팀-2차과제' />
 
